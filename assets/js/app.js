@@ -50,6 +50,7 @@ const nextButton = gallery.querySelector('.g-next');
 
 const ImageSlider = () => {
 	const gallery = document.getElementById('gallery');
+	const homeGallery = document.querySelector('.home-gallery')
 
 	const nextClickHandler = () => {
 		const galleryImages =
@@ -96,6 +97,35 @@ const ImageSlider = () => {
 
 	prevButton.addEventListener('click', prevClickHandler);
 	nextButton.addEventListener('click', nextClickHandler);
+
+	
+	// Swipe events
+	const swipeImages = () => {
+		let xDown = 0;
+		let xMove = 0;
+
+		const handleGalleryTouchStart = (e) => {
+			xDown = e.touches[0].clientX;
+		};
+		
+		const handleGalleryTouchMove = (e) => {
+			xMove = e.touches[0].clientX;
+		};
+		
+		const handleGalleryTouchEnd = (e) => {
+			if (xMove && xDown > xMove) nextClickHandler();
+			if (xMove && xDown < xMove) prevClickHandler();
+			
+			xDown = 0;
+			xMove = 0;
+		};
+
+		homeGallery.addEventListener('touchstart', handleGalleryTouchStart);
+		homeGallery.addEventListener('touchmove', handleGalleryTouchMove);
+		homeGallery.addEventListener('touchend', handleGalleryTouchEnd);
+	}
+	
+	swipeImages();
 };
 
 const slideImages = (images) => {
@@ -121,7 +151,6 @@ const slideImages = (images) => {
 	prevButton.classList.add('inactive');
 
 	galleryTransition.addEventListener('animationend', () => {
-		console.log('end transition');
 		galleryWrapper.classList.remove('changing-gallery');
 	});
 };
@@ -140,8 +169,31 @@ const mainMenuHandler = () => {
 	});
 };
 
+const mobileMenuHandler = () => {
+	const mobileMenuBtn = document.querySelector('#sm-menu');
+	const mainMenu = document.querySelector('#main-menu');
+
+	mobileMenuBtn.addEventListener('click', () => {
+		// open menu
+		if (mainMenu.classList.contains('open')) {
+			mainMenu.classList.add('closing');
+			const closignAmin = document.querySelector('.closing');
+
+			closignAmin.addEventListener('animationend', (a) => {
+				if (a.animationName === 'close-menu') {
+					mainMenu.classList.remove('closing');
+					mainMenu.classList.remove('open');
+				}
+			});
+			return null;
+		}
+		mainMenu.classList.add('open');
+	});
+};
+
 const setUp = () => {
 	mainMenuHandler();
+	mobileMenuHandler();
 	slideImages(AllImages.recent);
 	ImageSlider();
 };
