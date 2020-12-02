@@ -120,9 +120,9 @@ const ImageSlider = () => {
 			xMove = 0;
 		};
 
-		homeGallery.addEventListener('touchstart', handleGalleryTouchStart);
-		homeGallery.addEventListener('touchmove', handleGalleryTouchMove);
-		homeGallery.addEventListener('touchend', handleGalleryTouchEnd);
+		homeGallery.addEventListener('touchstart', handleGalleryTouchStart, {passive: true});
+		homeGallery.addEventListener('touchmove', handleGalleryTouchMove, {passive: true});
+		homeGallery.addEventListener('touchend', handleGalleryTouchEnd, {passive: true});
 	}
 	
 	swipeImages();
@@ -165,20 +165,23 @@ const mainMenuHandler = () => {
 		link.addEventListener('click', (e) => {
 			const goToGallery = e.target.getAttribute('data-menu');
 			AllImages[goToGallery] && slideImages(AllImages[goToGallery]);
+			console.log(mainMenu.classList.contains('open'));
 		});
 	});
 };
 
 const mobileMenuHandler = () => {
 	const mobileMenuBtn = document.querySelector('#sm-menu');
+	const mobileMenuIcon = mobileMenuBtn.querySelector('i');
 	const mainMenu = document.querySelector('#main-menu');
 
 	mobileMenuBtn.addEventListener('click', () => {
-		// open menu
 		if (mainMenu.classList.contains('open')) {
 			mainMenu.classList.add('closing');
-			const closignAmin = document.querySelector('.closing');
+			mobileMenuIcon.classList.remove('fa-times');
+			mobileMenuIcon.classList.add('fa-bars');
 
+			const closignAmin = document.querySelector('.closing');
 			closignAmin.addEventListener('animationend', (a) => {
 				if (a.animationName === 'close-menu') {
 					mainMenu.classList.remove('closing');
@@ -187,7 +190,10 @@ const mobileMenuHandler = () => {
 			});
 			return null;
 		}
+		
 		mainMenu.classList.add('open');
+		mobileMenuIcon.classList.remove('fa-bars');
+		mobileMenuIcon.classList.add('fa-times');
 	});
 };
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600&display=swap');
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -5,16 +7,17 @@
 }
 
 body {
-	font-family: Arial, Helvetica, sans-serif;
-  color: rgb(20, 20, 20);
-  height: 100vh;
+  font-family: 'Poppins', Helvetica, sans-serif;
+  font-weight: 300;
+	color: rgb(20, 20, 20);
+	height: 100vh;
 	background: rgb(251, 255, 253);
 	background: radial-gradient(
 		circle,
-		rgba(251, 255, 253, 1) 50%,
-		rgba(240, 242, 241, 1) 75%,
-		rgba(227, 227, 227, 1) 100%
-	);
+		rgb(255, 255, 255) 50%,
+		rgb(240, 242, 241) 75%,
+		rgb(214, 214, 214) 100%
+  );
 }
 
 a {
@@ -28,31 +31,31 @@ a:hover {
 }
 
 button {
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
-  margin: 0 10px;
-  cursor: pointer;
-  transition: all .5s ease;
+	border: none;
+	border-radius: 5px;
+	padding: 0.5rem 1rem;
+	margin: 0 10px;
+	cursor: pointer;
+	transition: all 0.5s ease;
 }
 
-button:hover{
-  background: rgb(0, 197, 181);
+button:hover {
+	background: rgb(0, 197, 181);
 }
 
-button:focus{
-  outline: none;
+button:focus {
+	outline: none;
 }
 
 header {
 	display: flex;
 	align-items: center;
 	padding: 1rem 2.5rem;
-  min-height: 4rem;
-  height: 7%;
+	min-height: 4rem;
+	height: 7%;
 }
 
-#sm-menu{
+#sm-menu {
   display: none;
 }
 
@@ -61,39 +64,44 @@ header h1 {
 }
 
 nav {
-  padding: .5rem 2rem;
-  height: 4%;
+	padding: 0.5rem 2rem;
+	height: 4%;
 }
 
 nav ul {
-  list-style: none;
+	list-style: none;
 }
-nav li{
-  display: inline;
-  margin: 0 .5rem;
-  padding: .5rem;
-  cursor: pointer;
-}
-
-nav li:first-child{
-  margin-left: 0;
+nav li {
+	display: inline;
+	margin: 0 0.5rem;
+	padding: 0.5rem;
+	cursor: pointer;
 }
 
-nav li:hover, nav li.active{
-  color: #5e60ce;
+nav li:first-child {
+	margin-left: 0;
+}
+
+nav li:hover,
+nav li.active {
+	color: #5e60ce;
+}
+
+nav li.about:hover{
+  color: rgb(0, 197, 181);
 }
 
 #main {
 	margin: auto;
-  width: calc(100vw - 15%);
-  height: 80%;
-  min-height: 82vh;
+	width: calc(100vw - 15%);
+	height: 80%;
+	min-height: 82vh;
 }
 
-@media (max-width: 768px){
-  #main{
-    width: 100%;
-  }
+@media (max-width: 768px) {
+	#main {
+		width: 100%;
+	}
 }
 
 #gallery {
@@ -108,8 +116,8 @@ nav li:hover, nav li.active{
 	display: flex;
 	width: 100vh;
 	justify-content: center;
-  align-items: center;
-  transition: all 0.5s ease;
+	align-items: center;
+	transition: all 0.5s ease;
 }
 
 .g-prev,
@@ -121,23 +129,22 @@ nav li:hover, nav li.active{
 
 .g-prev:hover,
 .g-next:hover {
-  color: #5e60ce;
+	color: #5e60ce;
 }
 
 .g-prev.inactive,
 .g-next.inactive {
-  color: #666;
-  pointer-events: none;
+	color: #666;
+	pointer-events: none;
 }
 
-
 .home-gallery {
-  position: relative;
+	position: relative;
 	display: flex;
 	width: 100%;
 	height: 100%;
 	align-items: center;
-  justify-content: center;
+	justify-content: center;
 }
 
 .gallery-image {
@@ -152,111 +159,117 @@ nav li:hover, nav li.active{
 }
 
 .gallery-image img {
-  width: 100%;
+	width: 100%;
 	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
 .changing-gallery {
-  animation: gallery-switch .7s ease;
+	animation: gallery-switch 0.7s ease;
 }
 
 @keyframes gallery-switch {
-  0% {
-    opacity: 0;
-    filter: invert(100%) brightness(60%);
-  }
-  50%{
-    opacity: 0.8;
-    filter: invert(100%) brightness(60%);
-    transform: scale(.99);
-  }
-  100%{
-    opacity: 1;
-    filter: invert(0%) brightness(100%);
-    transform: scale(1);
-  }
+	0% {
+		opacity: 0;
+		filter: invert(100%) brightness(60%);
+	}
+	50% {
+		opacity: 0.8;
+		filter: invert(100%) brightness(60%);
+		transform: scale(0.99);
+	}
+	100% {
+		opacity: 1;
+		filter: invert(0%) brightness(100%);
+		transform: scale(1);
+	}
 }
 
 footer {
-  width: 100%;
-  height: 7%;
+	width: 100%;
+	height: 7%;
 	padding: 1rem 2rem;
 }
 
 footer .social-links {
 	display: flex;
-  justify-content: flex-end;
-  align-items: center;
+	justify-content: flex-end;
+	align-items: center;
 }
 
 footer .social-links a {
 	margin: 0 1rem;
 }
 
-@media (max-width: 768px){
-  header {
-    padding: 1rem;
-  }
-  #sm-menu{
-    display: block;
-    background: transparent;
-    margin: 0 1rem 0 0;
-  }
-  nav{
-    position: fixed;
-    top: 5%;
-    height: auto;
-    z-index: 99;
+@media (max-width: 768px) {
+	header {
+		padding: 1rem;
+	}
+	#sm-menu {
+		display: block;
+		background: transparent;
+		margin: 0 1rem 0 0;
+	}
+	nav {
+		position: fixed;
+		top: 50px;
+		height: auto;
+		z-index: 99;
     display: none;
-  }
-  nav.open{
+    border-radius: 0 0 7px 7px ;
+		background: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0),
+			rgba(255, 255, 255, 0.8)
+    );
+	}
+	nav.open {
     display: block;
-    animation: open-menu 1s ease;
-  }
-  nav.closing{
-    animation: close-menu .5s ease;
-  }
-  
-  @keyframes open-menu {
-    0%{
-      /* transform: scaleY(0.1) translateY(-200%); */
-      transform: scaleY(0.1);
-    }
-    100%{
-      /* transform: scaleY(1) translateY(0%); */
-      transform: scaleY(1);
-    }
-    
-  }
-  @keyframes close-menu {
-    0%{
-      /* transform: scaleY(0.1) translateY(-200%); */
-      transform: scaleY(1);
-    }
-    100%{
-      /* transform: scaleY(1) translateY(0%); */
-      transform: scaleY(0.1);
-    }
-    
-  }
+		animation: open-menu 0.3s ease;
+	}
+	nav.closing {
+		animation: close-menu 0.3s ease;
+	}
 
-  #main-menu li{
-    display: block;
-    margin: .5rem 0;
-  }
+	@keyframes open-menu {
+		0% {
+      transform: translateX(-200%);
+      opacity: 0;
+		}
+		100% {
+      transform: translateX(0%);
+      opacity: 1;
+		}
+	}
+	@keyframes close-menu {
+		0% {
+      transform: translateX(0%);
+      opacity: 1;
+		}
+		100% {
+      transform: translateX(-200%);
+      opacity: 0;
+		}
+	}
 
-  #main{
+	#main-menu li {
+		display: block;
+		margin: 0.5rem 0;
+	}
+
+	#main {
     width: 100%;
-    height: 85%;
-  }
+	}
 
-  #gallery{
-    padding: 1rem;
-  }
+	#gallery {
+		padding: 1rem;
+	}
 
-  footer .social-links{
-    justify-content: center;
+  footer{
+    position: absolute;
+    bottom: 0;
   }
-
-  
+	footer .social-links {
+    font-size: .9rem;
+		justify-content: center;
+	}
 }
